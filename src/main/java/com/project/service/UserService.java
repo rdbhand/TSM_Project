@@ -5,6 +5,7 @@ import com.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,11 +19,18 @@ public class UserService {
         return userRepository.findAll();
     }
 
+
+    public Optional<User> getByEmail(User user){
+        return userRepository.findByEmail(user.getEmail());
+    }
+
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
 
     public User createUser(User user) {
+        Date curr_date=new Date();
+        user.setCreated_at(curr_date);
         return userRepository.save(user);
     }
 
@@ -34,7 +42,7 @@ public class UserService {
             user.setAddress(updatedUser.getAddress());
             user.setPhone(updatedUser.getPhone());
             user.setPassword(updatedUser.getPassword());
-            user.setCreated_at(updatedUser.getCreated_at());
+            user.setCreated_at(new Date());
             return userRepository.save(user);
         }).orElse(null);
     }
