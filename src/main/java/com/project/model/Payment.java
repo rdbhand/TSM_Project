@@ -24,6 +24,7 @@ public class Payment {
     @Column(unique = true)
     private String transactionId;
 
+
     public enum PaymentMethod {
         CASH, CARD, UPI, NETBANKING
     }
