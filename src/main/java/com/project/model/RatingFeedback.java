@@ -20,5 +20,45 @@ public class RatingFeedback {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    public Long getFeedbackId() {
+        return feedbackId;
+    }
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public String getFeedbackText() {
+        return feedbackText;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setFeedbackId(Long feedbackId) {
+        this.feedbackId = feedbackId;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public void setFeedbackText(String feedbackText) {
+        this.feedbackText = feedbackText;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     // Getters and Setters
 }

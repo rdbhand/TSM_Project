@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class SubscriptionService {
@@ -49,7 +50,12 @@ public class SubscriptionService {
         return subscriptionRepository.save(subscription);
     }
 
-    public Subscription getSubscriptionByUserId(Long userId) {
+    public List<Subscription> getSubscriptionByUserId(Long userId) {
         return subscriptionRepository.findByUserUserId(userId);
     }
+
+    public List<Subscription> getSubscriptionsByProvider(Long providerId) {
+        return subscriptionRepository.findSubscriptionsByProviderId(providerId);
+    }
+
 }
