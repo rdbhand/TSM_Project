@@ -23,19 +23,6 @@ public class RatingFeedbackController {
     @Autowired
     private SubscriptionRepository subscriptionRepo;
 
-//    @PostMapping("/save")
-//    public RatingFeedback saveFeedback(@RequestBody RatingFeedbackRequest request) {
-//
-//        Subscription subscription = subscriptionRepo.findById(request.getSubscription_id())
-//                .orElseThrow(() -> new RuntimeException("Subscription not found"));
-//
-//        RatingFeedback feedback = new RatingFeedback();
-//        feedback.setSubscription(subscription);
-//        feedback.setRating(request.getRating());
-//        feedback.setFeedbackText(request.getFeedback_text());
-//
-//        return service.saveFeedback(feedback);
-//    }
 
     @PostMapping("/save")
     public ResponseEntity<?> saveFeedback(@RequestBody RatingFeedbackRequest request) {
@@ -53,7 +40,7 @@ public class RatingFeedbackController {
         feedback.setFeedbackText(request.getFeedback_text());
         feedback.setCreatedAt(LocalDateTime.now());
 
-        RatingFeedback saved = subscriptionRepo.save(feedback);
+        RatingFeedback saved = service.saveFeedback(feedback);
 
         return ResponseEntity.ok(saved);
     }
